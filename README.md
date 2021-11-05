@@ -13,3 +13,7 @@ puis <b>php artisan serve</b>
 <b>npm install</b> pour la partie frontend
 puis <b>ng serve --o</b>
 
+pour se connecter 
+Email : ag@gmail.com 
+password : password
+
