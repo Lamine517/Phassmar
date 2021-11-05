@@ -1,0 +1,70 @@
+<div class="auth-wrapper">
+    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h3 class="h3 mb-3 font-weight-normal text-center">S'inscrire</h3>
+  
+        <!-- Errors -->
+        <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+          {{ errors?.name }}
+        </div>
+        <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+          {{ errors?.email }}
+        </div>
+        <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+            {{ errors?.password }}
+        </div>
+        <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
+            {{ errors?.password_confirmation }}
+        </div>
+        <div *ngIf="errors?.role" class="alert alert-danger mt-3">
+          {{ errors?.role }}
+        </div>
+        <div *ngIf="errors?.service" class="alert alert-danger mt-3">
+          {{ errors?.service }}
+        </div>
+        <div *ngIf="errors?.sous_service" class="alert alert-danger mt-3">
+          {{ errors?.sous_service }}
+        </div>
+  
+        <!-- Signup form -->
+        <div class="form-group">
+            <label>Nom d'Utilisateur</label>
+            <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label>Mot de passe</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <div class="form-group">
+          <label> Confirmez le mot de passe</label>
+          <input type="password" class="form-control" formControlName="password_confirmation">
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <select name="role" id="role" formControlName="role" class="form-control" >
+              <option value="user">Agent</option>
+              <option value="admin">Administrateur</option>
+              <option value="superAdmin">Super Administrateur</option>
+            </select>
+      </div>
+      <div class="form-group">
+        <label>Service</label>
+        <input type="text" class="form-control" formControlName="service">
+      </div>
+      <div class="form-group">
+        <label>Sous Service</label>
+        <select name="sous_service" id="sous_service" formControlName="sous_service" class="form-control" >
+          <option value="1">Police Nationale</option>
+          <option value="2">Ministere de l'interieur</option>
+          <option value="3">Direction des Douanes</option>
+          <option value="4">Marine Nationale</option>
+          <option value="5">Port Autonome de Dakar</option>
+        </select>
+      </div>
+        <button type="submit" class="btn btn-block btn-primary">Enregistrer</button>
+    </form>
+  </div>
+  

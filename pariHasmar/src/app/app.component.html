@@ -1,0 +1,26 @@
+<!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top"> -->
+<!-- <h5 class="my-0 mr-md-auto font-weight-normal">Pari-Hassmar</h5> -->
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark border-bottom shadow-sm fixed-top p-3 px-md-4 mb-3">
+  <a class="navbar-brand">Pari-Hassmar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <!-- <a class="nav-item nav-link" routerLink="/alertes" routerLinkActive="active" *ngIf="isSignedIn">Alertes</a> -->
+      <a class="nav-item nav-link" routerLink="/alertes/list-item-alertes" routerLinkActive="active"
+        *ngIf="isSignedIn">Alertes</a>
+      <a class="nav-item nav-link" routerLink="/services" routerLinkActive="active" *ngIf="isSignedIn">Services</a>
+      <a class="nav-item nav-link" routerLink="/sous-services" routerLinkActive="active" *ngIf="isSignedIn">Sous
+        Service</a>
+      <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active" *ngIf="isSignedIn">Utilisateurs</a>
+      <a class="nav-item nav-link" routerLink="/operations" routerLinkActive="active" *ngIf="isSignedIn">Operations</a>
+      <a class="nav-item nav-link" routerLink="/profile" routerLinkActive="active" *ngIf="isSignedIn">Mon Profil </a>
+      <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!isSignedIn">Se connecter</a>
+      <!-- <a class="nav-item nav-link" routerLink="/register"  routerLinkActive="active" *ngIf="!isSignedIn">S'inscrire</a> -->
+    </div>
+  </div>
+  <button class="btn btn-outline-light" (click)="signOut()" *ngIf="isSignedIn">Deconnexion</button>
+</nav>
+<router-outlet></router-outlet>

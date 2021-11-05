@@ -1,0 +1,108 @@
+<div class="col " style="padding-top: 80px;">
+  <input class="form-control w-25" style="float: right;" type="search" #searchInput (keyup)="search(searchInput.value)"
+    name="" placeholder="rechercher ici" id="">
+  <button class="btn btn-primary w-25" style="float: left;" data-toggle="modal" data-target="#ajouterSousService"
+    (click)="triggerModal(modalData)">Nouveau sous Service</button>
+
+  <!-- Boîte de dialogue -->
+  <!-- <div class="modal fade" id="ajouterSousService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+  <ng-template #modalData let-modal>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un sous nouveau service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Libelle du sous service</label>
+              <input type="text" class="form-control" formControlName="libelle_sous_service" id="libelle_sous_service">
+            </div>
+            <div class="row m-2">
+              <label>Service</label>
+              <app-list-item-service></app-list-item-service>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.close('Save click')">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="ajouterSousService()">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </ng-template>
+  <!-- </div><br> --><br>
+
+
+  <div class="col pt-5">
+    <table class="table hover table-striped mx-auto" style="height: 40vh; overflow: auto;">
+      <caption>
+        <!-- <span class="text-primary ">LISTE DE TOUS LES SOUS SERVICES ( {{TousLesSousServices.length}} )</span> -->
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Libelle</th>
+          <th scope="col">Service</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sousservice of TousLesSousServices">
+          <td>{{ sousservice.id }}</td>
+          <td>{{ sousservice.libelle_sous_service }}</td>
+          <td>{{ sousservice.libelle_service }}</td>
+          <td>
+            <button type="button" class="btn btn-warning mx-3" data-toggle="modal" data-target="#modifierSousService"
+              (click)="triggerModal(modalDataUpdate) ; showUpdateModel(sousservice.id)"><i
+                class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click)="delete(sousservice.id)"><i
+                class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <!-- Modifier un nouveau service  -->
+    <!-- Boîte de dialogue -->
+    <ng-template #modalDataUpdate let-modal>
+      <!-- <div class="modal fade" id="modifierSousService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modifier un sous service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <div class="row m-2">
+                <label>Libelle</label>
+                <input type="text" class="form-control" formControlName="updateLibelleSousService"
+                  id="updateLibelleSousService">
+              </div>
+              <div class="row m-2">
+                <label>Service</label>
+                <app-list-item-service></app-list-item-service>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')">Annuler</button>
+            <button type="button" class="btn btn-primary" (click)="update(id)">Mettre a jour</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- </div> -->
+
+  </div>

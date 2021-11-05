@@ -1,0 +1,12 @@
+<table class="table">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Liste des participants</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let users of TousLesUtilisateurs">
+            <td> <i class="fa fa-check-circle"></i> <b> {{users.name }} </b>( {{users.libelle_service }} )</td>
+        </tr>
+    </tbody>
+</table>

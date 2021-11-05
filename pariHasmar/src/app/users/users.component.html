@@ -1,0 +1,184 @@
+<div class="container-fluid" style="padding-top: 80px;">
+
+  <!-- ajouter un nouveau service  -->
+  <div class="col ">
+    <!-- Boîte de dialogue -->
+    <ng-template #modalDataUser let-modal>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau Utilisateur</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <div class="row">
+                <label>Nom d'Utilisateur</label>
+                <input type="text" class="form-control" formControlName="name" id="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <label>Email</label>
+                <input type="text" class="form-control" formControlName="email" id="email">
+              </div>
+            </div>
+            <div class="row">
+              <!-- <div class="col"> -->
+              <label>Mot de passe</label>
+              <input type="text" class="form-control" formControlName="password" id="password">
+              <!-- </div> -->
+            </div>
+            <div class="row">
+              <label>Confirmez votre mot de passe</label>
+              <input type="text" class="form-control" formControlName="password_confirmation"
+                id="password_confirmation">
+            </div>
+
+            <div class="form-group">
+              <div class="col">
+                <label>Role</label>
+                <select name="role" id="role" formControlName="role" class="form-control">
+                  <option value="user">Agent</option>
+                  <option value="admin">Administrateur</option>
+                  <option value="superAdmin">Super Administrateur</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label>Service</label>
+                <app-list-item-service></app-list-item-service>
+              </div>
+              <div class="col">
+                <label>Sous Service</label>
+                <app-list-item-sous-service></app-list-item-sous-service>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+              (click)="modal.close('Save click')">Annuler</button>
+            <button type="button" class="btn btn-primary" (click)="ajouterUtilisateur()">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <input class="form-control w-25" style="float: right;" type="search" #searchInput
+      (keyup)="search(searchInput.value)" name="" placeholder="rechercher ici" id="">
+    <button class="btn btn-primary w-25" style="float: left;" data-toggle="modal" data-target="#ajouterUtilisateur"
+      (click)="triggerModal(modalDataUser)">Nouveau Utilisateur</button>
+  </div><br>
+
+  <div class="col pt-5 w-100 mx-auto">
+    <table class="table hover table-striped mx-auto" style="height: 40vh; overflow: auto;">
+      <caption>
+        <span class="text-primary ">LISTE DE TOUS LES UTILISATEURS ( {{TousLesUtilisateurs.length}} )</span>
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Service</th>
+          <th scope="col">Sous service</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of TousLesUtilisateurs">
+          <td>{{ user.id }} </td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.libelle_service }}</td>
+          <td>{{ user.libelle_sous_service }}</td>
+          <td>
+            <button type="button" class="btn btn-warning mx-3" data-toggle="modal" data-target="#modifierUtilisateur"
+              (click)="triggerModal(modalDataUpdate) ; showUpdateModel(user.id)"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click)="delete(user.id)"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modifier un nouveau service  -->
+  <!-- Boîte de dialogue -->
+  <ng-template #modalDataUpdate let-modal>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier un Utilisateur</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Nom d'Utilisateur</label>
+              <input type="text" class="form-control" formControlName="updateName" id="updateName">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Email</label>
+              <input type="text" class="form-control" formControlName="updateEmail" id="updateEmail">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Mot de passe</label>
+              <input type="text" class="form-control" formControlName="updatePassword" id="updatePassword">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Confirmez votre mot de passe</label>
+              <input type="text" class="form-control" formControlName="updatePassword_confirmation"
+                id="updatePassword_confirmation">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Role</label>
+              <select name="updateRole" id="updateRole" formControlName="updateRole" class="form-control">
+                <option value="user">Agent</option>
+                <option value="admin">Administrateur</option>
+                <option value="superAdmin">Super Administrateur</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label>Service</label>
+                <app-list-item-service></app-list-item-service>
+              </div>
+              <div class="col">
+                <label>Sous Service</label>
+                <app-list-item-sous-service></app-list-item-sous-service>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="update(id)">Mettre a jour</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

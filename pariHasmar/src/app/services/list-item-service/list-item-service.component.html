@@ -1,0 +1,4 @@
+<select name="services_id" id="services_id" formControlName="services_id" class="form-control">
+    <option *ngFor="let service of TousLesServices" [value]="service.id">{{service.libelle_service }}
+    </option>
+</select>

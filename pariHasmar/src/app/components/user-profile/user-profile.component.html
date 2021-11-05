@@ -1,0 +1,292 @@
+<div class="container-fluid">
+
+  <!-- <div class="card inner-main">
+      <div class="card-header">
+        User Profile
+      </div>
+      <div class="card-body">
+        <p class="card-text">Nom Utilisateur: <strong>{{UserProfile?.name}}</strong></p>
+        <p class="card-text">Email: <strong>{{UserProfile?.email}}</strong></p>
+      </div>
+    </div> -->
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-sm-2">
+      <div class="card text-white bg-light" style="max-width: 15rem;">
+        <div class="card-header text-white bg-dark text-center" style="font-size: .75rem;font-weight: bold;">
+          HASSMAR
+        </div>
+        <div class="card-body">
+          <p class="card-text text-primary text-center" style="font-size: 3rem;font-weight: bold;"> 20</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-white bg-light " style="max-width: 15rem;">
+        <div class="card-header text-white bg-dark text-center" style="font-size: .75rem;font-weight: bold;">
+          POLICE NATIONALE
+        </div>
+        <div class="card-body">
+          <p class="card-text text-primary text-center" style="font-size: 3rem;font-weight: bold;"> 20</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-white bg-light" style="max-width: 15rem;">
+        <div class="card-header text-white bg-dark text-center" style="font-size: .65rem;font-weight: bold;">
+          DIRECTION DES DOUANES
+        </div>
+        <div class="card-body">
+          <p class="card-text text-primary text-center" style="font-size: 3rem;font-weight: bold;"> 20</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-white bg-light " style="max-width: 15rem;">
+        <div class="card-header text-white bg-dark text-center" style="font-size: .60rem;font-weight: bold;">
+          MINISTERE DE L'INTERIEUR
+        </div>
+        <div class="card-body">
+          <p class="card-text text-primary text-center" style="font-size: 3rem;font-weight: bold;"> 20</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-white bg-light  mb-3" style="max-width: 15rem;">
+        <div class="card-header text-white bg-dark text-center" style="font-size: .75rem;font-weight: bold;">
+          PORT AUTONOME
+        </div>
+        <div class="card-body">
+          <p class="card-text text-primary text-center" style="font-size: 3rem;font-weight: bold;"> 20</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="row mb-3">
+        <button type="button" class="btn btn-danger">
+          Pas encore envoyés: <span class="badge badge-light">4</span>
+        </button>
+      </div>
+      <div class="row mb-3">
+        <button type="button" class="btn btn-warning">
+          En cours: <span class="badge badge-light">15</span>
+        </button>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-primary">
+          Reçues: <span class="badge badge-light">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr><br>
+  <!-- **********************************************Tableau Alerte************************************************* -->
+
+
+  <!-- Ajouter une nouvelle alerte -->
+  <!-- Boîte de dialogue -->
+  <ng-template #modalData let-modal>
+    <!-- <div class="modal fade" id="ajouterAlerte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter une Nouvelle Alerte</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Intiule</label>
+                <input type="text" class="form-control" formControlName="intitule" id="intitule">
+              </div>
+              <div class="col-sm-6">
+                <label>Niveau</label>
+                <select name="niveau" id="niveau" formControlName="niveau" class="form-control">
+                  <option value="critique">Critique</option>
+                  <option value="majeur">Majeur</option>
+                  <option value="mineur">Mineur</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Description</label>
+                <input type="text" class="form-control" formControlName="description" id="description">
+              </div>
+              <div class="col-sm-6">
+                <label>fichier</label>
+                <input type="file" class="form-control" formControlName="fichier" id="fichier">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>latitude</label>
+                <input type="text" class="form-control" formControlName="latitude" id="latitude">
+              </div>
+              <div class="col-sm-6">
+                <label>longitude</label>
+                <input type="text" class="form-control" formControlName="longitude" id="longitude">
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <h6>Destinataire (s)</h6>
+          <div class="form-check form-switch">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Ministere de l'interieur</label>
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input" formControlName="destinataire"
+              id="destinataire">
+          </div>
+          <div class="form-check form-switch">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Police Nationale</label>
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input" formControlName="destinataire"
+              id="destinataire">
+          </div>
+          <div class="form-check form-switch">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Direction des Douanes</label>
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input" formControlName="destinataire"
+              id="destinataire">
+          </div>
+          <div class="form-check form-switch">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Gendarmerie Nationale </label>
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input" formControlName="destinataire"
+              id="destinataire">
+          </div>
+          <div class="form-check form-switch">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Port Autonome de Dakar </label>
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input" formControlName="destinataire"
+              id="destinataire">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.close('Save click')">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="ajouterAlerte()">Enregistrer</button>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+
+    <!--//fin  -->
+
+    <!-- </div> -->
+  </ng-template>
+  <!--  -->
+  <app-alertes></app-alertes>
+
+
+
+  <!-- Modifier une  alerte -->
+  <!-- Boîte de dialogue -->
+  <ng-template #modalDataUpdate let-modal>
+    <!-- <div class="modal fade" id="modifierAlerte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier une Alerte</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Intiule</label>
+                <input type="text" class="form-control" formControlName="updateIntitule" id="updateIntitule">
+              </div>
+              <div class="col-sm-6">
+                <label>Niveau</label>
+                <select name="niveau" id="updateNiveau" formControlName="updateNiveau" class="form-control">
+                  <option value="critique">Critique</option>
+                  <option value="majeur">Majeur</option>
+                  <option value="mineur">Mineur</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Description</label>
+                <input type="text" class="form-control" formControlName="updateDescription" id="updateDescription">
+              </div>
+              <div class="col-sm-6">
+                <label>fichier</label>
+                <input type="file" class="form-control" formControlName="updateFichier" id="updateFichier">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>latitude</label>
+                <input type="text" class="form-control" formControlName="updateLatitude" id="updateLatitude">
+              </div>
+              <div class="col-sm-6">
+                <label>longitude</label>
+                <input type="text" class="form-control" formControlName="updateLongitude" id="updateLongitude">
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <h6>Destinataire (s)</h6>
+          <div class="form-check form-switch">
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input"
+              formControlName="updateDestinataire" id="updateDestinataire">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Ministere de l'interieur</label>
+          </div>
+          <div class="form-check form-switch">
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input"
+              formControlName="updateDestinataire" id="updateDestinataire">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Police Nationale</label>
+          </div>
+          <div class="form-check form-switch">
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input"
+              formControlName="updateDestinataire" id="updateDestinataire">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Direction des Douanes</label>
+          </div>
+          <div class="form-check form-switch">
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input"
+              formControlName="updateDestinataire" id="updateDestinataire">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Gendarmerie Nationale </label>
+          </div>
+          <div class="form-check form-switch">
+            <input type="checkbox" id="flexSwitchCheckDefault" class="form-check-input"
+              formControlName="updateDestinataire" id="updateDestinataire">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Port Autonome de Dakar </label>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="update(id)">Mettre a jour</button>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </ng-template>

@@ -1,0 +1,165 @@
+<div class="container-fluid">
+    <div class="row" style="height: 250px;">
+        <section class="alerte">
+            <table>
+                <div class="nomalerte">
+
+                    <p><i class="fa fa-bell"></i> Nom alerte</p><br>
+                    <p><b>Nom alerte</b></p>
+                </div>
+                <div class="date">
+                    <p> <i class="fa fa-calendar"></i> 10 decembre 2020</p><br>
+                    <p><b>10 decembre 2020</b></p>
+                </div>
+                <div class="niveau">
+                    <p> <i class="fa fa-exclamation-triangle"></i> urgent</p><br>
+                    <p><b>urgent</b></p>
+                </div>
+                <div class="destinataire">
+                    <p> <i class="fa fa-user"></i> Destinataire</p><br>
+                    <p><b>HASSMAR</b></p>
+                    <p><b>Police Nationale</b></p>
+                    <p><b>Marine Nationale</b></p>
+                    <p><b>Direction des Douanes</b></p>
+                    <p><b>Sapeurs Pompiers</b></p>
+                </div>
+                <div class="position">
+                    <p> <i class="fa fa-map-marker"></i> Position</p>
+                    <p><b>Latitude 14,681</b></p>
+                    <p><b>Longitude 15, 67</b></p>
+                </div>
+
+            </table>
+        </section>
+    </div>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-8" style="height: auto;">
+            <div class="section1">
+                <table class="table">
+                    <thead class="bg-dark text-white">
+                        <th>Actions</th>
+                        <td></td>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="col-md-3">Intitule operation</th>
+                            <td class="text-black-50 col-md-9"> 2 decembre 2020 </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- les commentaires -->
+
+                <div class="row commentaires  p-3">
+
+                    <table class="table p-3 border-5 border-dark-50 table-bordered">
+                        <tbody>
+                            <!-- premiere discussion -->
+                            <tr>
+                                <td class="col-md-3">
+                                    12/11/2020
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </td>
+                                <td class="col-md-9">
+                                    <div class="row commentaires">
+                                        <span class="heures"><b>Khadija FAYE</b> 10:15</span>
+                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                            blanditiis praesentium voluptatum deleniti atque corrupti quos
+                                            dolores et quas molestias excepturi sint occaecati cupiditate non
+                                            provident, similique sunt in culpa qui officia deserunt mollitia animi, id
+                                            est
+                                            laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+                                            distinctio
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- deuxieme discussion -->
+                            <tr>
+                                <td>
+                                    12/11/2020
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </td>
+                                <td>
+                                    <div class="row commentaires ">
+                                        <span class="heures"><b>Khadija FAYE</b> 10:15</span>
+                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiisAt
+                                            vero
+                                            eos et
+                                            accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                            praesentium
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- troisieme discussion -->
+                            <tr>
+                                <td>
+                                    01/01/2021
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </td>
+                                <td>
+                                    <div class="row commentaires">
+                                        <span class="heures"><b>Khadija FAYE</b> 10:15</span>
+                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiisAt
+                                            vero
+                                            eos et
+                                            accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                            praesentium
+                                        </p>
+                                        <div class="image">
+                                            <img src="../../assets/ambulance.jpeg" width="100%">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- quatrieme discussion -->
+                            <tr>
+                                <td>
+                                    03/01/2021
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </td>
+                                <td>
+                                    <div class="row commentaires">
+                                        <span class="heures"><b>Khadija FAYE</b> 10:15</span>
+                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                                            praesentium</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- les actions -->
+                            <tr>
+                                <td>
+                                    <span>Actions</span>
+                                </td>
+                                <td>
+                                    <div class="row commentaires mt-3">
+                                        <form action="">
+                                            <textarea name="action" id="action" cols="40" rows="5"
+                                                placeholder="Ecrivez votre commentaire"></textarea>
+                                            <br>
+                                            <input type="file" class="form-control w-50">
+                                            <br>
+                                            <button class="btn btn-info text-center mt-1   ">Envoyer</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- pour le formulaire d'invitation -->
+        <div class="col-md-4" style="height: 300px;">
+            <section class="invitation">
+                <app-list-item-users></app-list-item-users>
+                <button type="button" class="btn btn-info mx-auto"> <i class="fa fa-plus text-white"></i> Nouvelle
+                    invitattion</button>
+            </section>
+        </div>
+    </div>
+</div>

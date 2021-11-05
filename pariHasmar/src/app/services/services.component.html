@@ -1,0 +1,103 @@
+<div class="container-fluid" style="padding-top: 80px;">
+
+  <!-- ajouter un nouveau service  -->
+  <div class="col ">
+
+
+    <!-- Boîte de dialogue -->
+    <ng-template #modalData let-modal>
+      <!-- <div class="modal fade" id="ajouterService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau service</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <div class="row m-2">
+                <label>Libelle</label>
+                <input type="text" class="form-control" formControlName="libelle_service" id="libelle_service">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+              (click)="modal.close('Save click')">Annuler</button>
+            <button type="button" class="btn btn-primary" (click)="ajouterService()">Enregistrer</button>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </ng-template>
+    <input class="form-control w-25" style="float: right;" type="search" #searchInput
+      (keyup)="search(searchInput.value)" name="" placeholder="rechercher ici" id="">
+    <button class="btn btn-primary w-25" style="float: left;" data-toggle="modal" data-target="#ajouterService"
+      (click)="triggerModal(modalData)">Nouveau Service</button>
+  </div><br>
+
+  <div class="col pt-5 w-100 mx-auto">
+    <table class="table hover table-striped mx-auto" style="height: 40vh; overflow: auto;">
+      <caption>
+        <span class="text-primary ">LISTE DE TOUS LES SERVICES ( {{TousLesServices.length}} )</span>
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Libelle</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of TousLesServices">
+          <td>{{ service.id}}</td>
+          <td>{{ service.libelle_service}}</td>
+          <td>
+            <button type="button" class="btn btn-warning mx-3" data-toggle="modal" data-target="#modifierService"
+              (click)="triggerModal(modalDataUpdate) ;showUpdateModel(service.id)"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click)="delete(service.id)"><i
+                class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modifier un nouveau service  -->
+  <!-- Boîte de dialogue -->
+  <ng-template #modalDataUpdate let-modal>
+    <!-- <div class="modal fade" id="modifierService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier un service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="row m-2">
+              <label>Libelle</label>
+              <input type="text" class="form-control" formControlName="updateLibelleService" id="updateLibelleService"
+                value="">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="update(id)">Mettre a jour</button>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </ng-template>
+
+
+
+</div>

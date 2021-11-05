@@ -1,0 +1,41 @@
+<div class="col" style="margin-top: 80px;">
+    <h5 class="m-3">Voici la liste des alertes en cours</h5>
+    <table class="table table-hover m-3">
+        <caption>
+            <span class="text-primary ">LISTE DE TOUTES LES ALERTES ( {{Allalertes.length}} )</span>
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Intitule d'alerte</th>
+                <th scope="col">Niveau d'alerte</th>
+                <th scope="col">Description</th>
+                <th scope="col">Fichier</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Longitude</th>
+                <th scope="col">Destinataire (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alerte of Allalertes">
+                <td>{{ alerte.id}}</td>
+                <td>{{ alerte.intitule}}</td>
+                <td>
+                    <button type="button" [ngClass]="{
+            'btn btn-':true,
+            'btn btn-primary': alerte.niveau === 'critique',
+            'btn btn-danger': alerte.niveau === 'urgent',
+            'btn btn-dark': alerte.niveau === 'mineur',
+            'btn btn-warning': alerte.niveau === 'majeur'
+          }">
+                        {{ alerte.niveau}} </button>
+                </td>
+                <td>{{ alerte.description}}</td>
+                <td> {{alerte.fichier}}</td>
+                <td>{{ alerte.latitude}}</td>
+                <td>{{ alerte.longitude}}</td>
+                <td>{{ alerte.destinataire}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
