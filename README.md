@@ -12,11 +12,14 @@ puis modifier le nom de la base de donnee , le port 8889 en 3306 etc..
 ensuite  <b>php artisan migrate --seed</b>
 puis <b>php artisan serve</b>
 
-Entrer dans le dossier parihassmar <b> cd parihassmar </b>
+Entrer dans le dossier pariHasmar <b> cd pariHasmar </b>, lancer
+
 <b>npm install</b> pour la partie frontend
 puis <b>ng serve --o</b>
 
 pour se connecter 
+
 Email : ag@gmail.com 
+
 password : password
 
